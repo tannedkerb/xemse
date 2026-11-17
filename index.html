@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XƏMSƏ — Experience Azerbaijan</title>
+  <meta name="description" content="XƏMSƏ — beş binadan ibarət turizm kompleksi: Nar Otel, Buta Arena, Şah Plov, Xarıbülbül və Azərbaycan Muzeyi." />
+  <link rel="icon" href="img/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="is-loading">
+
+  <!-- ===== PRELOADER ===== -->
+  <div class="preloader" id="preloader">
+    <div class="preloader__inner">
+      <img src="img/emblem.png" alt="" class="preloader__logo" />
+      <div class="preloader__word">XƏMSƏ</div>
+      <div class="preloader__bar"><span></span></div>
+    </div>
+  </div>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="header" id="header">
+    <div class="container header__row">
+      <a href="#home" class="brand">
+        <img src="img/emblem.png" alt="XƏMSƏ" class="brand__logo" />
+        <span class="brand__text">
+          <span class="brand__name">XƏMSƏ</span>
+          <span class="brand__tag">Experience Azerbaijan</span>
+        </span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#about" data-i18n="nav.about"></a>
+        <a href="#complex" data-i18n="nav.complex"></a>
+        <a href="#rooms" data-i18n="nav.rooms"></a>
+        <a href="#restaurant" data-i18n="nav.restaurant"></a>
+        <a href="#services" data-i18n="nav.services"></a>
+        <a href="#gallery" data-i18n="nav.gallery"></a>
+        <a href="#team" data-i18n="nav.team"></a>
+        <a href="#contact" data-i18n="nav.contact"></a>
+      </nav>
+      <div class="header__actions">
+        <div class="lang" id="lang">
+          <button data-lang="az">AZ</button>
+          <button data-lang="ru">RU</button>
+          <button data-lang="en">EN</button>
+        </div>
+        <button class="btn btn--gold btn--sm js-book" data-i18n="btn.book"></button>
+        <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="home">
+    <div class="hero__bg"><img src="img/complex-night.jpg" alt="XƏMSƏ complex" /></div>
+    <div class="hero__shade"></div>
+    <canvas class="hero__seeds" id="seeds"></canvas>
+    <div class="container hero__content">
+      <p class="kicker hero__kicker" data-i18n="hero.kicker"></p>
+      <h1 class="hero__title" id="heroTitle" aria-label="XƏMSƏ">XƏMSƏ</h1>
+      <p class="hero__sub" data-i18n="hero.sub"></p>
+      <div class="hero__cta">
+        <a href="#complex" class="btn btn--outline" data-i18n="btn.explore"></a>
+        <button class="btn btn--gold js-book" data-i18n="btn.book"></button>
+      </div>
+    </div>
+
+    <form class="quick container" id="quickForm">
+      <label class="quick__field"><span data-i18n="q.checkin"></span><input type="date" id="qIn" required /></label>
+      <label class="quick__field"><span data-i18n="q.checkout"></span><input type="date" id="qOut" required /></label>
+      <label class="quick__field"><span data-i18n="q.guests"></span>
+        <select id="qGuests"><option>1</option><option selected>2</option><option>3</option><option>4</option></select>
+      </label>
+      <button class="btn btn--gold" type="submit" data-i18n="q.find"></button>
+    </form>
+
+    <a href="#about" class="hero__scroll"><span data-i18n="hero.scroll"></span><i></i></a>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section about" id="about">
+    <div class="ornament ornament--left"></div>
+    <div class="container about__grid">
+      <div class="about__media reveal">
+        <div class="about__frame">
+          <img src="img/complex-day.jpg" alt="XƏMSƏ" />
+        </div>
+        <img src="img/emblem.png" alt="" class="about__badge" />
+      </div>
+      <div class="about__text">
+        <p class="kicker reveal" data-i18n="about.kicker"></p>
+        <h2 class="title reveal" data-i18n="about.title"></h2>
+        <p class="lead reveal" data-i18n="about.p1"></p>
+        <p class="reveal" data-i18n="about.p2"></p>
+        <div class="stats reveal">
+          <div class="stat"><b data-count="5">0</b><span data-i18n="stat.buildings"></span></div>
+          <div class="stat"><b data-count="240">0</b><span data-i18n="stat.rooms"></span></div>
+          <div class="stat"><b data-count="14">0</b><span data-i18n="stat.regions"></span></div>
+          <div class="stat"><b data-count="5">0</b><span data-i18n="stat.team"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== COMPLEX: 5 BUILDINGS ===== -->
+  <section class="section complex" id="complex">
+    <div class="container">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="complex.kicker"></p>
+        <h2 class="title reveal" data-i18n="complex.title"></h2>
+      </div>
+      <div class="showcase reveal" id="showcase">
+        <ol class="showcase__list" id="showcaseList"></ol>
+        <div class="showcase__stage" id="showcaseStage"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ROOMS ===== -->
+  <section class="section rooms" id="rooms">
+    <div class="container rooms__grid">
+      <div class="rooms__aside reveal">
+        <div class="rooms__photo"><img src="img/hotel.jpg" alt="Nar Otel" /></div>
+      </div>
+      <div class="rooms__main">
+        <p class="kicker reveal" data-i18n="rooms.kicker"></p>
+        <h2 class="title reveal" data-i18n="rooms.title"></h2>
+        <p class="lead reveal" data-i18n="rooms.sub"></p>
+        <div class="room-list" id="roomList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESTAURANT ===== -->
+  <section class="section restaurant" id="restaurant">
+    <div class="container rest__grid">
+      <div class="rest__text">
+        <p class="kicker reveal" data-i18n="rest.kicker"></p>
+        <h2 class="title reveal" data-i18n="rest.title"></h2>
+        <p class="lead reveal" data-i18n="rest.sub"></p>
+        <h3 class="menu__head reveal" data-i18n="rest.menu"></h3>
+        <ul class="menu" id="menuList"></ul>
+      </div>
+      <div class="rest__media reveal">
+        <img src="img/restaurant.jpg" alt="Şah Plov" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="serv.kicker"></p>
+        <h2 class="title reveal" data-i18n="serv.title"></h2>
+      </div>
+      <div class="serv-grid">
+        <div class="serv reveal"><div class="serv__ico">🧖</div><h4 data-i18n="s.spa"></h4><p data-i18n="s.spa.d"></p></div>
+        <div class="serv reveal"><div class="serv__ico">🏊</div><h4 data-i18n="s.pool"></h4><p data-i18n="s.pool.d"></p></div>
+        <div class="serv reveal"><div class="serv__ico">🍽️</div><h4 data-i18n="s.rest"></h4><p data-i18n="s.rest.d"></p></div>
+        <div class="serv reveal"><div class="serv__ico">🎤</div><h4 data-i18n="s.conf"></h4><p data-i18n="s.conf.d"></p></div>
+        <div class="serv reveal"><div class="serv__ico">🚘</div><h4 data-i18n="s.transfer"></h4><p data-i18n="s.transfer.d"></p></div>
+        <div class="serv reveal"><div class="serv__ico">🎠</div><h4 data-i18n="s.kids"></h4><p data-i18n="s.kids.d"></p></div>
+        <div class="serv reveal"><div class="serv__ico">🎬</div><h4 data-i18n="s.cinema"></h4><p data-i18n="s.cinema.d"></p></div>
+        <div class="serv reveal"><div class="serv__ico">🏛️</div><h4 data-i18n="s.tour"></h4><p data-i18n="s.tour.d"></p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALLERY ===== -->
+  <section class="section gallery" id="gallery">
+    <div class="container">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="gal.kicker"></p>
+        <h2 class="title reveal" data-i18n="gal.title"></h2>
+      </div>
+      <div class="masonry" id="masonry">
+        <a href="img/complex-night.jpg" class="m-item m-wide reveal"><img src="img/complex-night.jpg" alt="" loading="lazy" /></a>
+        <a href="img/hotel.jpg" class="m-item m-tall reveal"><img src="img/hotel.jpg" alt="" loading="lazy" /></a>
+        <a href="img/entertainment.jpg" class="m-item reveal"><img src="img/entertainment.jpg" alt="" loading="lazy" /></a>
+        <a href="img/sport.jpg" class="m-item m-tall reveal"><img src="img/sport.jpg" alt="" loading="lazy" /></a>
+        <a href="img/museum.jpg" class="m-item m-wide reveal"><img src="img/museum.jpg" alt="" loading="lazy" /></a>
+        <a href="img/restaurant.jpg" class="m-item m-tall reveal"><img src="img/restaurant.jpg" alt="" loading="lazy" /></a>
+        <a href="img/complex-day.jpg" class="m-item m-wide reveal"><img src="img/complex-day.jpg" alt="" loading="lazy" /></a>
+        <a href="img/poster.jpg" class="m-item m-tall reveal"><img src="img/poster.jpg" alt="" loading="lazy" /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEAM ===== -->
+  <section class="section team" id="team">
+    <div class="container">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="team.kicker"></p>
+        <h2 class="title reveal" data-i18n="team.title"></h2>
+        <p class="lead reveal" data-i18n="team.sub"></p>
+      </div>
+      <div class="team-grid" id="teamGrid"></div>
+    </div>
+  </section>
+
+  <!-- ===== REVIEWS ===== -->
+  <section class="section reviews" id="reviews">
+    <div class="container">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="rev.kicker"></p>
+        <h2 class="title reveal" data-i18n="rev.title"></h2>
+      </div>
+      <div class="slider reveal" id="slider">
+        <div class="slider__track" id="sliderTrack"></div>
+        <div class="slider__nav">
+          <button class="slider__btn" id="prevRev" aria-label="Prev">‹</button>
+          <div class="slider__dots" id="sliderDots"></div>
+          <button class="slider__btn" id="nextRev" aria-label="Next">›</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section faq" id="faq">
+    <div class="container faq__wrap">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="faq.kicker"></p>
+        <h2 class="title reveal" data-i18n="faq.title"></h2>
+      </div>
+      <div class="accordion" id="faqList"></div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section contact" id="contact">
+    <div class="container contact__grid">
+      <div class="contact__info">
+        <p class="kicker reveal" data-i18n="contact.kicker"></p>
+        <h2 class="title reveal" data-i18n="contact.title"></h2>
+        <ul class="contact__list reveal">
+          <li><span data-i18n="contact.address"></span><b id="cAddress"></b></li>
+          <li><span data-i18n="contact.phone"></span><b><a id="cPhone" href="#"></a></b></li>
+          <li><span data-i18n="contact.email"></span><b><a id="cEmail" href="#"></a></b></li>
+          <li><span data-i18n="contact.hours"></span><b data-i18n="contact.hours.v"></b></li>
+        </ul>
+        <div class="contact__btns reveal">
+          <a class="btn btn--outline js-wa" target="_blank" rel="noopener" data-i18n="contact.write"></a>
+          <button class="btn btn--gold js-book" data-i18n="btn.book"></button>
+        </div>
+        <div class="socials reveal" id="socials"></div>
+      </div>
+      <div class="contact__map reveal">
+        <iframe id="map" title="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer__row">
+      <div class="footer__brand">
+        <img src="img/emblem.png" alt="" />
+        <div>
+          <div class="brand__name">XƏMSƏ</div>
+          <p data-i18n="footer.text"></p>
+        </div>
+      </div>
+      <p class="footer__copy">© <span id="year"></span> XƏMSƏ. <span data-i18n="footer.rights"></span></p>
+    </div>
+  </footer>
+
+  <!-- ===== FLOATING ===== -->
+  <a class="wa-float js-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" width="28" height="28"><path fill="currentColor" d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.4.7 4.7 1.9 6.7L3 29l6.9-2.1c1.9 1 4 1.6 6.1 1.6 7 0 12.7-5.6 12.7-12.6S23 3 16 3zm0 23.1c-1.9 0-3.8-.5-5.4-1.5l-.4-.2-4.1 1.2 1.2-4-.3-.4c-1.1-1.7-1.7-3.6-1.7-5.6C5.3 9.8 10.1 5 16 5s10.7 4.8 10.7 10.6S21.9 26.1 16 26.1zm5.9-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.4 1.4.6 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+  </a>
+  <button class="to-top" id="toTop" aria-label="Top">↑</button>
+
+  <!-- ===== BUILDING MODAL ===== -->
+  <div class="modal" id="bModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__box modal__box--wide">
+      <button class="modal__close" data-close aria-label="Close">×</button>
+      <div class="bmodal" id="bModalBody"></div>
+    </div>
+  </div>
+
+  <!-- ===== BOOKING MODAL ===== -->
+  <div class="modal" id="bookModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__box">
+      <button class="modal__close" data-close aria-label="Close">×</button>
+      <div class="bk" id="bkForm">
+        <img src="img/emblem.png" alt="" class="bk__logo" />
+        <h3 class="bk__title" data-i18n="bk.title"></h3>
+        <form id="bookForm" novalidate>
+          <label class="f f--full"><span data-i18n="bk.room"></span><select id="bRoom"></select></label>
+          <label class="f"><span data-i18n="q.checkin"></span><input type="date" id="bIn" required /></label>
+          <label class="f"><span data-i18n="q.checkout"></span><input type="date" id="bOut" required /></label>
+          <label class="f"><span data-i18n="bk.adults"></span><input type="number" id="bAdults" min="1" max="6" value="2" /></label>
+          <label class="f"><span data-i18n="bk.kids"></span><input type="number" id="bKids" min="0" max="4" value="0" /></label>
+          <label class="f f--full"><span data-i18n="bk.name"></span><input type="text" id="bName" required /></label>
+          <label class="f"><span data-i18n="bk.phone"></span><input type="tel" id="bPhone" placeholder="+994" required /></label>
+          <label class="f"><span data-i18n="bk.email"></span><input type="email" id="bEmail" /></label>
+          <label class="f f--full"><span data-i18n="bk.comment"></span><textarea id="bComment" rows="2"></textarea></label>
+          <label class="check f--full"><input type="checkbox" id="bTransfer" /><i></i><span data-i18n="bk.transfer"></span></label>
+          <div class="bk__sum f--full">
+            <div><span data-i18n="bk.nights"></span><b id="sNights">0</b></div>
+            <div><span data-i18n="bk.total"></span><b id="sTotal">0 AZN</b></div>
+          </div>
+          <p class="bk__err f--full" id="bErr"></p>
+          <button class="btn btn--gold f--full" type="submit" data-i18n="bk.submit"></button>
+        </form>
+      </div>
+      <div class="ok" id="bkOk" hidden>
+        <div class="ok__icon"><svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-16"/></svg></div>
+        <h3 data-i18n="ok.title"></h3>
+        <p data-i18n="ok.text"></p>
+        <p class="ok__num"><span data-i18n="ok.num"></span>: <b id="okNum"></b></p>
+        <button class="btn btn--gold" data-close data-i18n="ok.close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LIGHTBOX ===== -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox__close" aria-label="Close">×</button>
+    <button class="lightbox__nav lightbox__prev" aria-label="Prev">‹</button>
+    <img alt="" id="lbImg" />
+    <button class="lightbox__nav lightbox__next" aria-label="Next">›</button>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
