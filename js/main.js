@@ -7,14 +7,23 @@
   const L = (obj) => (obj && (obj[lang] || obj.az)) || "";
 
   /* ---------------- PRELOADER ---------------- */
+  // The intro animation lasts ~4.7 s; the preloader closes when it has played AND the page has loaded.
+  // A click / tap skips it.
+  const INTRO_MS = 4700, t0 = performance.now();
+  let pageLoaded = false, introClosed = false;
+  function closeIntro() {
+    if (introClosed) return;
+    introClosed = true;
+    $("#preloader").classList.add("done");
+    document.body.classList.remove("is-loading");
+    splitTitle();
+    startSeeds();
+  }
   window.addEventListener("load", () => {
-    setTimeout(() => {
-      $("#preloader").classList.add("done");
-      document.body.classList.remove("is-loading");
-      splitTitle();
-      startSeeds();
-    }, 1700);
+    pageLoaded = true;
+    setTimeout(closeIntro, Math.max(0, INTRO_MS - (performance.now() - t0)));
   });
+  $("#preloader").addEventListener("click", closeIntro);
 
   function splitTitle() {
     const el = $("#heroTitle");
