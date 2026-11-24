@@ -72,10 +72,10 @@ p{color:var(--muted)}
    1.8–2.35 sword under the fruit makes one 180° sweep left → right (cut at ~2.08) ·
    2.15 halves fly apart, seeds burst · 2.55–3.4 petals grow · 3.25 word · ~4.7 fade out */
 .preloader{--navy:#0b3550;--red:#c0262b;--gold:#f0b43a;--orange:#e8892a;
-  position:fixed;inset:0;z-index:999;background:#fffcf3;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;cursor:pointer;transition:opacity .9s var(--ease),visibility .9s}
+  position:fixed;inset:0;z-index:999;background:radial-gradient(ellipse at 50% 45%,#13263a,#08121d 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;cursor:pointer;transition:opacity .9s var(--ease),visibility .9s}
 .preloader.done{opacity:0;visibility:hidden}
 .pl-stage{--L:min(300px,66vw);position:relative;width:var(--L);padding-top:calc(var(--L) * .85)}
-.pl-branch{position:absolute;top:-2%;left:-25%;width:150%;height:auto;overflow:visible;transform-origin:0 50%;animation:plSway 1.8s ease-in-out both,plBranchOut .6s 1.7s ease forwards}
+.pl-branch{--bw:calc(60vw + 320px);position:absolute;width:var(--bw);height:auto;overflow:visible;left:calc(50% - var(--bw) * .8333);top:calc(var(--L) * .295 - var(--bw) * .1792);transform-origin:0 50%;animation:plSway 1.8s ease-in-out both,plBranchOut .6s 1.7s ease forwards}
 .pl-logo{position:relative;width:100%;aspect-ratio:511/483;animation:plShake .35s 2.08s ease-in-out}
 .pl-logo > *{position:absolute;inset:0;width:100%;height:100%}
 .pl-logo svg{overflow:visible}
@@ -93,14 +93,14 @@ p{color:var(--muted)}
   94%{transform:translateY(0) scale(1.02,.97)}
   100%{transform:none}}
 @keyframes plGone{to{opacity:0}}
-@keyframes plSway{0%,100%{transform:rotate(0)}30%{transform:rotate(-1.2deg)}65%{transform:rotate(1deg)}}
+@keyframes plSway{0%,100%{transform:rotate(0)}30%{transform:rotate(-.25deg)}65%{transform:rotate(.2deg)}}
 @keyframes plBranchOut{to{opacity:0;transform:translateY(-40px)}}
 
 /* sword: pivot at the grip (under the fruit), one 180° sweep from left to right */
-.pl-logo > .pl-sword{inset:auto;left:42%;top:4.4%;width:16%;height:auto;transform-origin:50% 86%;transform:rotate(-90deg);opacity:0;
+.pl-logo > .pl-sword{inset:auto;left:42%;top:4.4%;width:35%;height:auto;transform-origin:22.86% 86%;transform:rotate(-107deg);opacity:0;
   animation:plSword .5s 1.85s cubic-bezier(.65,0,.35,1) forwards,plSwordOut .3s 2.4s ease forwards}
-@keyframes plSword{0%{opacity:1;transform:rotate(-92deg)}100%{opacity:1;transform:rotate(92deg)}}
-@keyframes plSwordOut{from{opacity:1;transform:rotate(92deg)}to{opacity:0;transform:rotate(92deg) translateY(12%)}}
+@keyframes plSword{0%{opacity:1;transform:rotate(-107deg)}100%{opacity:1;transform:rotate(77deg)}}
+@keyframes plSwordOut{from{opacity:1;transform:rotate(77deg)}to{opacity:0;transform:rotate(77deg) translateY(12%)}}
 /* golden trail of the sweep */
 .pl-logo > .pl-arc{inset:auto;left:-46%;top:-1.6%;width:192%;height:auto;opacity:0;animation:plArcIn .01s 1.85s forwards,plArcOut .45s 2.35s ease forwards}
 .pl-arc path{stroke-dasharray:296;stroke-dashoffset:296;animation:plArcDraw .5s 1.85s cubic-bezier(.65,0,.35,1) forwards}
@@ -135,10 +135,10 @@ p{color:var(--muted)}
 .pl-petal{opacity:0;transform-origin:50% 53%;transform:scale(.15) rotate(var(--r));animation:plGrow .8s calc(2.55s + var(--i) * .11s) cubic-bezier(.2,1.35,.4,1) forwards}
 @keyframes plGrow{0%{opacity:0;transform:scale(.15) rotate(var(--r))}30%{opacity:1}100%{opacity:1;transform:none}}
 
-.preloader__word{margin-top:26px;font-family:var(--serif);font-weight:600;font-size:clamp(2rem,7vw,2.8rem);letter-spacing:.42em;padding-left:.42em;color:var(--navy);display:flex}
+.preloader__word{margin-top:26px;font-family:var(--serif);font-weight:600;font-size:clamp(2rem,7vw,2.8rem);letter-spacing:.42em;padding-left:.42em;color:var(--cream);display:flex}
 .preloader__word span{display:inline-block;opacity:0;transform:translateY(18px);animation:plWord .7s calc(3.25s + var(--i) * .08s) var(--ease) forwards}
 @keyframes plWord{to{opacity:1;transform:none}}
-.preloader__sub{margin-top:6px;font-size:.68rem;font-weight:700;letter-spacing:.45em;padding-left:.45em;text-transform:uppercase;color:var(--orange);opacity:0;animation:fadeUp .8s 3.75s var(--ease) forwards}
+.preloader__sub{margin-top:6px;font-size:.68rem;font-weight:700;letter-spacing:.45em;padding-left:.45em;text-transform:uppercase;color:var(--gold);opacity:0;animation:fadeUp .8s 3.75s var(--ease) forwards}
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 
 .scroll-progress{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:left;will-change:transform;z-index:200;background:linear-gradient(90deg,var(--pom),var(--gold))}
