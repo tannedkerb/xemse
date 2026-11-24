@@ -97,10 +97,10 @@ p{color:var(--muted)}
 @keyframes plBranchOut{to{opacity:0;transform:translateY(-40px)}}
 
 /* sword: pivot at the grip (under the fruit), one 180° sweep from left to right */
-.pl-logo > .pl-sword{inset:auto;left:42%;top:4.4%;width:35%;height:auto;transform-origin:22.86% 86%;transform:rotate(-107deg);opacity:0;
+.pl-logo > .pl-sword{inset:auto;left:23%;top:4.4%;width:35%;height:auto;transform-origin:77.14% 86%;transform:rotate(-75deg);opacity:0;
   animation:plSword .5s 1.85s cubic-bezier(.65,0,.35,1) forwards,plSwordOut .3s 2.4s ease forwards}
-@keyframes plSword{0%{opacity:1;transform:rotate(-107deg)}100%{opacity:1;transform:rotate(77deg)}}
-@keyframes plSwordOut{from{opacity:1;transform:rotate(77deg)}to{opacity:0;transform:rotate(77deg) translateY(12%)}}
+@keyframes plSword{0%{opacity:1;transform:rotate(-75deg)}100%{opacity:1;transform:rotate(105deg)}}
+@keyframes plSwordOut{from{opacity:1;transform:rotate(105deg)}to{opacity:0;transform:rotate(105deg) translateY(12%)}}
 /* golden trail of the sweep */
 .pl-logo > .pl-arc{inset:auto;left:-46%;top:-1.6%;width:192%;height:auto;opacity:0;animation:plArcIn .01s 1.85s forwards,plArcOut .45s 2.35s ease forwards}
 .pl-arc path{stroke-dasharray:296;stroke-dashoffset:296;animation:plArcDraw .5s 1.85s cubic-bezier(.65,0,.35,1) forwards}
