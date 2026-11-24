@@ -14,52 +14,47 @@
 <body class="is-loading">
 
   <!-- ===== PRELOADER ===== -->
-  <!-- Заставка: гранат падает с ветки → нож разрезает → внутри узор логотипа → вырастают лепестки -->
+  <!-- Заставка (плоский 2D в цветах логотипа): гранат падает с толстой ветки →
+       меч снизу делает полуоборот 180° слева направо и разрубает его → внутри узор логотипа → вырастают лепестки -->
   <div class="preloader" id="preloader" aria-hidden="true">
     <svg width="0" height="0" style="position:absolute">
       <defs>
-        <radialGradient id="narSkin" cx="38%" cy="32%" r="75%">
-          <stop offset="0" stop-color="#ff7a7f"/>
-          <stop offset=".35" stop-color="#d42a3c"/>
-          <stop offset=".8" stop-color="#9a1022"/>
-          <stop offset="1" stop-color="#5c0613"/>
-        </radialGradient>
-        <linearGradient id="narCrown" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#e0475a"/>
-          <stop offset="1" stop-color="#8e0f20"/>
-        </linearGradient>
-        <linearGradient id="blade" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#f4f7fb"/>
-          <stop offset=".55" stop-color="#b9c3cf"/>
-          <stop offset="1" stop-color="#6f7c8b"/>
-        </linearGradient>
+        <!-- целый гранат: плоские заливки, тёмно-синий контур, золотая внутренняя линия как на лого -->
         <symbol id="nar" viewBox="0 0 511 483">
-          <path d="M222 118 L214 34 L240 74 L259 10 L278 74 L304 34 L296 118 Z" fill="url(#narCrown)"/>
-          <path d="M236 112 L259 52 L282 112 Z" fill="#6e0a18" opacity=".55"/>
-          <circle cx="259" cy="246" r="142" fill="url(#narSkin)"/>
-          <ellipse cx="259" cy="118" rx="44" ry="12" fill="#5c0613" opacity=".45"/>
-          <ellipse cx="205" cy="190" rx="34" ry="58" fill="#fff" opacity=".22" transform="rotate(-24 205 190)"/>
-          <circle cx="318" cy="330" r="5" fill="#fff" opacity=".18"/>
+          <g stroke="#0b3550" stroke-width="10" stroke-linejoin="round">
+            <path d="M214 124 L206 30 L238 70 L259 6 L280 70 L312 30 L304 124 Z" fill="#c0262b"/>
+            <circle cx="259" cy="250" r="140" fill="#c0262b"/>
+          </g>
+          <path d="M226 112 L222 58 L242 84 L259 36 L276 84 L296 58 L292 112" fill="none" stroke="#f0b43a" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/>
+          <circle cx="259" cy="250" r="116" fill="none" stroke="#f0b43a" stroke-width="10"/>
+          <path d="M180 200 C 190 165, 215 145, 245 140" fill="none" stroke="#e8892a" stroke-width="12" stroke-linecap="round"/>
+          <path d="M300 330 C 322 316, 338 296, 344 272" fill="none" stroke="#8e1a1f" stroke-width="10" stroke-linecap="round" opacity=".55"/>
+        </symbol>
+        <!-- лист в стиле лепестков логотипа -->
+        <symbol id="leaf" viewBox="-4 -26 108 52">
+          <path d="M0 0 C 25 -24, 70 -24, 100 0 C 70 24, 25 24, 0 0 Z" fill="currentColor" stroke="#0b3550" stroke-width="5" stroke-linejoin="round"/>
+          <path d="M10 0 C 40 -6, 65 -6, 88 0" fill="none" stroke="#f0b43a" stroke-width="4" stroke-linecap="round"/>
         </symbol>
       </defs>
     </svg>
 
     <div class="pl-stage" id="plStage">
-      <svg class="pl-branch" viewBox="0 0 600 150" aria-hidden="true">
-        <path d="M-10 70 C 120 40, 220 95, 330 62 S 520 30, 610 58" fill="none" stroke="#5b3a22" stroke-width="12" stroke-linecap="round"/>
-        <path d="M300 66 C 302 85, 300 100, 300 118" fill="none" stroke="#5b3a22" stroke-width="5" stroke-linecap="round"/>
-        <g fill="#2f6b3a">
-          <ellipse cx="90" cy="42" rx="34" ry="13" transform="rotate(-25 90 42)"/>
-          <ellipse cx="170" cy="92" rx="36" ry="13" transform="rotate(28 170 92)"/>
-          <ellipse cx="250" cy="45" rx="32" ry="12" transform="rotate(-35 250 45)"/>
-          <ellipse cx="365" cy="88" rx="36" ry="13" transform="rotate(30 365 88)"/>
-          <ellipse cx="440" cy="30" rx="34" ry="12" transform="rotate(-20 440 30)"/>
-          <ellipse cx="530" cy="70" rx="34" ry="12" transform="rotate(22 530 70)"/>
+      <svg class="pl-branch" viewBox="0 0 600 170" aria-hidden="true">
+        <!-- толстая ветка: тёмно-синий контур + коричневая заливка + золотая прожилка -->
+        <g fill="none" stroke-linecap="round">
+          <path d="M-20 78 C 110 40, 220 104, 330 66 S 520 28, 620 62" stroke="#0b3550" stroke-width="58"/>
+          <path d="M300 74 C 304 96, 300 112, 300 132" stroke="#0b3550" stroke-width="28"/>
+          <path d="M-20 78 C 110 40, 220 104, 330 66 S 520 28, 620 62" stroke="#8a4b22" stroke-width="44"/>
+          <path d="M300 74 C 304 96, 300 112, 300 132" stroke="#8a4b22" stroke-width="16"/>
+          <path d="M20 62 C 120 34, 210 88, 300 62" stroke="#b86b2e" stroke-width="9" opacity=".9"/>
+          <path d="M360 52 C 430 36, 500 30, 580 46" stroke="#b86b2e" stroke-width="7" opacity=".8"/>
         </g>
-        <g fill="#3f8a4b" opacity=".85">
-          <ellipse cx="130" cy="60" rx="26" ry="9" transform="rotate(15 130 60)"/>
-          <ellipse cx="405" cy="58" rx="28" ry="9" transform="rotate(-18 405 58)"/>
-        </g>
+        <use href="#leaf" x="40" y="6" width="96" height="46" style="color:#3a8a3a" transform="rotate(-18 88 30)"/>
+        <use href="#leaf" x="140" y="92" width="100" height="48" style="color:#126470"/>
+        <use href="#leaf" x="210" y="10" width="88" height="42" style="color:#3a8a3a"/>
+        <use href="#leaf" x="360" y="84" width="100" height="48" style="color:#4bb3c8"/>
+        <use href="#leaf" x="420" y="0" width="96" height="46" style="color:#3a8a3a"/>
+        <use href="#leaf" x="500" y="70" width="92" height="44" style="color:#126470"/>
       </svg>
 
       <div class="pl-logo">
@@ -82,14 +77,21 @@
         <div class="pl-half pl-half--r"><svg><use href="#nar"/></svg></div>
         <div class="pl-fruit"><svg><use href="#nar"/></svg></div>
 
+        <!-- след меча: полукруг 180° -->
+        <svg class="pl-arc" viewBox="-100 -100 200 100" aria-hidden="true">
+          <path d="M-94 0 A94 94 0 0 1 94 0" fill="none" stroke="#f0b43a" stroke-width="7" stroke-linecap="round"/>
+        </svg>
         <div class="pl-slash"></div>
-        <svg class="pl-knife" viewBox="0 0 60 300" aria-hidden="true">
-          <rect x="22" y="0" width="16" height="78" rx="6" fill="#3b2416"/>
-          <rect x="22" y="12" width="16" height="4" fill="#c9a25a"/>
-          <rect x="22" y="58" width="16" height="4" fill="#c9a25a"/>
-          <rect x="14" y="78" width="32" height="10" rx="3" fill="#c9a25a"/>
-          <path d="M20 88 L40 88 L42 270 L30 300 L18 270 Z" fill="url(#blade)"/>
-          <path d="M30 92 L31 280" stroke="#fff" stroke-width="2" opacity=".6"/>
+        <!-- меч: рукоять внизу (центр вращения), клинок вверх -->
+        <svg class="pl-sword" viewBox="0 0 64 420" aria-hidden="true">
+          <g stroke="#0b3550" stroke-width="5" stroke-linejoin="round">
+            <path d="M23 318 L23 46 L32 6 L41 46 L41 318 Z" fill="#eef3f6"/>
+            <path d="M32 30 L32 300" stroke="#9cc7d6" stroke-width="4"/>
+            <rect x="4" y="314" width="56" height="16" rx="8" fill="#f0b43a"/>
+            <rect x="24" y="330" width="16" height="58" rx="4" fill="#c0262b"/>
+            <circle cx="32" cy="400" r="14" fill="#f0b43a"/>
+          </g>
+          <path d="M26 344 L38 352 M26 360 L38 368" stroke="#f0b43a" stroke-width="4" stroke-linecap="round"/>
         </svg>
       </div>
     </div>
