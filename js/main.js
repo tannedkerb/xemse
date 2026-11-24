@@ -44,6 +44,8 @@
     renderRooms();
     renderMenu();
     renderTeam();
+    renderTickets();
+    renderInvest();
     renderReviews();
     renderFaq();
     renderContacts();
@@ -69,6 +71,7 @@
           <div class="slide__tag">${L(b.tag)}</div>
           <h3>${L(b.name)}</h3>
           <p>${L(b.short)}</p>
+          <div class="slide__cap">👥 ${L(b.capacity)}</div>
           <button class="btn btn--outline btn--sm" data-open="${i}">${t("btn.more")}</button>
         </div>
       </div>`).join("");
@@ -115,6 +118,7 @@
       <div class="bmodal__body" style="--c:${b.color}">
         <p class="kicker">0${i + 1} / 05</p>
         <h3>${L(b.name)}</h3>
+        <div class="slide__cap">👥 ${L(b.capacity)}</div>
         <p>${L(b.long)}</p>
         <ul class="bmodal__feat">${L(b.features).map((f) => `<li>${f}</li>`).join("")}</ul>
         ${b.id === "hotel" ? `<button class="btn btn--gold btn--sm js-book" style="margin-top:28px">${t("btn.book")}</button>` : ""}
@@ -126,7 +130,7 @@
 
   // ---- rooms
   function renderRooms() {
-    $("#roomList").innerHTML = ROOMS.map((r) => `
+    $("#roomList").innerHTML = `<div class="room-note reveal">⚖️ ${t("rooms.single")}</div>` + ROOMS.map((r) => `
       <article class="room reveal">
         ${r.img ? `<div class="room__img"><img src="${r.img}" alt="" loading="lazy" /></div>` : ""}
         <div>
@@ -136,7 +140,8 @@
           <div class="room__amen">${r.amen.map((a) => `<span>${AMENITIES[a].icon} ${L(AMENITIES[a])}</span>`).join("")}</div>
         </div>
         <div class="room__side">
-          <div class="price">${money(r.price)}<small>${t("rooms.night")}</small></div>
+          <div class="price">${r.price.low}–${money(r.price.high)}<small>${t("rooms.night")}</small>
+            <span class="price__season">${money(r.price.low)} · ${t("rooms.low")}<br>${money(r.price.high)} · ${t("rooms.high")}</span></div>
           <button class="btn btn--outline btn--sm" data-room="${r.id}">${t("btn.choose")}</button>
         </div>
       </article>`).join("");
@@ -158,16 +163,39 @@
   function renderTeam() {
     $("#teamGrid").innerHTML = TEAM.map((m, i) => {
       const b = BUILDINGS.find((x) => x.id === m.building) || BUILDINGS[i];
-      const initials = m.name.split(" ").map((w) => w[0]).slice(0, 2).join("");
       return `
       <div class="member reveal" style="--c:${b.color};transition-delay:${i * 80}ms">
-        <div class="member__ava">${m.photo ? `<img src="${m.photo}" alt="${m.name}" />` : initials}</div>
+        <div class="member__ava"><img src="img/team/${b.id}.jpg" alt="${L(b.name)}" loading="lazy" /></div>
         <div class="member__num">0${i + 1}</div>
         <h4>${m.name}</h4>
-        <p>${L(m.role)}</p>
+        <p>${t("team.author")}</p>
         <span class="member__b">${L(b.name)}</span>
       </div>`;
     }).join("");
+  }
+
+  // ---- tickets + Khamsa Pass
+  function renderTickets() {
+    $("#passPrice").innerHTML = `${KHAMSA_PASS.from}–${money(KHAMSA_PASS.to)}`;
+    $("#tkList").innerHTML = TICKETS.map((x, i) => {
+      const b = BUILDINGS.find((y) => y.id === x.building);
+      return `
+      <li class="tk reveal" style="--c:${b.color};transition-delay:${i * 80}ms">
+        <img src="img/team/${b.id}.jpg" alt="" loading="lazy" />
+        <div class="tk__txt"><b>${L(b.name)}</b><span>${L(x.label)}</span></div>
+        <em>${x.from}–${money(x.to)}</em>
+      </li>`;
+    }).join("");
+  }
+
+  // ---- investment figures (animated counters)
+  function renderInvest() {
+    $("#invGrid").innerHTML = INVEST.map((x, i) => `
+      <div class="inv reveal" style="transition-delay:${(i % 3) * 80}ms">
+        <b><span data-num="${x.value}" data-dec="${x.decimals || 0}">0</span>${L(x.suffix)}${x.unit ? ` <small>${x.unit}</small>` : ""}</b>
+        <p>${L(x.label)}</p>
+      </div>`).join("");
+    $$("#invGrid [data-num]").forEach((el) => numIO.observe(el));
   }
 
   // ---- reviews slider
@@ -231,18 +259,28 @@
   /* ---------------- HEADER / NAV ---------------- */
   const header = $("#header"), progress = $("#scrollProgress"), toTop = $("#toTop");
   const heroBg = $(".hero__bg");
-  function onScroll() {
-    const y = window.scrollY, h = document.documentElement.scrollHeight - innerHeight;
-    header.classList.toggle("scrolled", y > 40);
-    progress.style.width = (y / h) * 100 + "%";
-    toTop.classList.toggle("show", y > 800);
-    if (y < innerHeight) heroBg.style.transform = `translateY(${y * 0.3}px)`;
-    // active nav link
-    let cur = "";
-    $$("section[id]").forEach((s) => { if (y + 140 >= s.offsetTop) cur = s.id; });
-    $$(".nav a").forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + cur));
+  // Layout is measured once (and on resize / content change), DOM writes happen once per frame.
+  const sections = $$("section[id]"), navLinks = $$(".nav a");
+  let secTops = [], docH = 1, ticking = false, lastCur = null;
+  function measure() {
+    secTops = sections.map((s) => [s.id, s.getBoundingClientRect().top + scrollY]);
+    docH = Math.max(1, document.documentElement.scrollHeight - innerHeight);
   }
+  function update() {
+    ticking = false;
+    const y = scrollY;
+    header.classList.toggle("scrolled", y > 40);
+    progress.style.transform = `scaleX(${Math.min(1, y / docH)})`;
+    toTop.classList.toggle("show", y > 800);
+    if (y < innerHeight * 1.2) heroBg.style.transform = `translate3d(0,${(y * 0.3).toFixed(1)}px,0)`;
+    let cur = "";
+    for (const [id, top] of secTops) if (y + 140 >= top) cur = id;
+    if (cur !== lastCur) { lastCur = cur; navLinks.forEach((a) => a.classList.toggle("active", a.getAttribute("href") === "#" + cur)); }
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
   addEventListener("scroll", onScroll, { passive: true });
+  addEventListener("resize", () => { measure(); onScroll(); });
+  addEventListener("load", () => { measure(); onScroll(); });
   toTop.addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }));
 
   const burger = $("#burger"), nav = $("#nav");
@@ -257,9 +295,15 @@
 
   /* ---------------- REVEAL + COUNTERS ---------------- */
   const io = new IntersectionObserver((entries) => entries.forEach((e) => {
-    if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    if (e.isIntersecting) {
+      const el = e.target; el.classList.add("in"); io.unobserve(el);
+      if (el.style.transitionDelay) setTimeout(() => { el.style.transitionDelay = ""; }, 1400);
+    }
   }), { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
-  function observeReveal() { $$(".reveal:not(.in)").forEach((el) => io.observe(el)); }
+  function observeReveal() {
+    $$(".reveal:not(.in)").forEach((el) => io.observe(el));
+    requestAnimationFrame(() => { measure(); onScroll(); });
+  }
 
   const cio = new IntersectionObserver((entries) => entries.forEach((e) => {
     if (!e.isIntersecting) return;
@@ -271,6 +315,27 @@
     requestAnimationFrame(step); cio.unobserve(el);
   }), { threshold: 0.6 });
   $$("[data-count]").forEach((el) => cio.observe(el));
+
+  const numIO = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (!e.isIntersecting) return;
+    const el = e.target, end = +el.dataset.num, dec = +el.dataset.dec, t0 = performance.now();
+    const fmt = (v) => v.toFixed(dec).replace(".", lang === "en" ? "." : ",");
+    const step = (now) => {
+      const p = Math.min((now - t0) / 2000, 1);
+      el.textContent = fmt(end * (1 - Math.pow(1 - p, 4)));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step); numIO.unobserve(el);
+  }), { threshold: 0.5 });
+
+  /* ---------------- HERO SLIDESHOW (5 buildings) ---------------- */
+  const heroImgs = $$("#heroBg img");
+  let heroI = 0;
+  setInterval(() => {
+    heroImgs[heroI].classList.remove("active");
+    heroI = (heroI + 1) % heroImgs.length;
+    heroImgs[heroI].classList.add("active");
+  }, 6000);
 
   /* ---------------- HERO SEEDS (canvas particles) ---------------- */
   function startSeeds() {
@@ -322,7 +387,7 @@
 
   function fillRoomSelect() {
     const sel = $("#bRoom"), cur = sel.value;
-    sel.innerHTML = ROOMS.map((r) => `<option value="${r.id}">${L(r.name)} — ${money(r.price)} ${t("rooms.night")}</option>`).join("");
+    sel.innerHTML = ROOMS.map((r) => `<option value="${r.id}">${L(r.name)} — ${r.price.low}–${money(r.price.high)} ${t("rooms.night")}</option>`).join("");
     if (cur) sel.value = cur;
   }
   function nights() {
@@ -332,7 +397,13 @@
   function calcBooking() {
     const room = ROOMS.find((r) => r.id === $("#bRoom").value) || ROOMS[0];
     const n = Math.max(0, nights() || 0);
-    const total = n * room.price + ($("#bTransfer").checked ? 40 : 0);
+    let total = 0;
+    const d = new Date($("#bIn").value);
+    for (let k = 0; k < n; k++) {
+      const m = new Date(d.getTime() + k * 864e5).getMonth() + 1;
+      total += HIGH_SEASON_MONTHS.includes(m) ? room.price.high : room.price.low;
+    }
+    total += $("#bTransfer").checked ? 40 : 0;
     $("#sNights").textContent = n;
     $("#sTotal").textContent = money(total);
   }

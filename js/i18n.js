@@ -25,12 +25,12 @@ const I18N = {
 
   "about.kicker":   { az: "Layihə haqqında", ru: "О проекте", en: "About the project" },
   "about.title":    { az: "Milli irs ilə müasir memarlığın görüşü", ru: "Встреча национального наследия и современной архитектуры", en: "Where national heritage meets modern architecture" },
-  "about.p1":       { az: "Layihəmiz Azərbaycanda turizmin inkişafına həsr olunub: müasir dizaynı milli simvolikanın elementləri ilə birləşdirən unikal memarlıq obyektlərinin yaradılması.",
-                      ru: "Наш проект посвящён развитию туризма в Азербайджане через создание уникальных архитектурных объектов, сочетающих современный дизайн и элементы национальной символики.",
-                      en: "Our project is about growing tourism in Azerbaijan with unique buildings that combine modern design and national symbols." },
-  "about.p2":       { az: "Azərbaycan zəngin tarixə, mədəniyyətə və təbiətə malikdir. Memarlıq milli irs ilə müasir turizm meylləri arasında körpü ola bilər. «Xəmsə» adı Nizami Gəncəvinin beş poemasından ilhamlanıb: bizim də beş binamız və beş nəfərlik komandamız var.",
-                      ru: "Азербайджан обладает богатой историей, культурой и природой, и архитектура может стать мостом между наследием и современным туризмом. Название «Хамсе» вдохновлено пятью поэмами Низами Гянджеви: у нас тоже пять зданий и команда из пяти человек.",
-                      en: "Azerbaijan has a rich history, culture and nature, and architecture can bridge that heritage and modern tourism. The name 'Khamsa' comes from Nizami Ganjavi's five poems: we also have five buildings and a team of five." },
+  "about.p1":       { az: "KHAMSA — Xəzər sahilində vahid park ərazisində beş monumental bina. Hər bina beynəlxalq səviyyəli bionik və simvolik memarlıq şah əsəri kimi layihələndirilib.",
+                      ru: "KHAMSA объединяет пять монументальных сооружений на единой прибрежной парковой территории Каспийского моря. Каждое здание — самостоятельный шедевр бионической и символической архитектуры международного уровня.",
+                      en: "KHAMSA brings five monumental buildings together in one seaside park on the Caspian. Each is designed as a world-class masterpiece of bionic and symbolic architecture." },
+  "about.p2":       { az: "«Xəmsə» — Nizami Gəncəvinin ölməz «Xəmsə»sinə poetik istinad. Kompleks «ağıllı davamlı kurort» standartları (BREEAM / LEED), beş dildə naviqasiya, maneəsiz mühit və vahid Khamsa Pass ilə reallaşdırılır. Beş bina — beş müəllif: komandamızın hər üzvü bir binanın müəllifidir.",
+                      ru: "«Хамсе» — поэтическая отсылка к бессмертной «Хамсе» Низами Гянджеви. Комплекс реализуется по стандартам «умного устойчивого курорта» (BREEAM / LEED), с навигацией на пяти языках, безбарьерной средой и единым пропуском Khamsa Pass. Пять зданий — пять авторов: у каждого из нас своё здание.",
+                      en: "'Khamsa' is a poetic nod to Nizami Ganjavi's immortal Khamsa. The complex follows 'smart sustainable resort' standards (BREEAM / LEED), with signage in five languages, step-free access and a single Khamsa Pass. Five buildings, five authors: each of us designed one building." },
   "stat.buildings": { az: "bina", ru: "зданий", en: "buildings" },
   "stat.rooms":     { az: "nömrə", ru: "номеров", en: "rooms" },
   "stat.regions":   { az: "region muzeydə", ru: "регионов в музее", en: "regions in the museum" },
@@ -75,7 +75,9 @@ const I18N = {
 
   "team.kicker":    { az: "Komanda", ru: "Команда", en: "Team" },
   "team.title":     { az: "Beş bina — beş müəllif", ru: "Пять зданий — пять авторов", en: "Five buildings, five authors" },
-  "team.sub":       { az: "Xəmsədə beş poema var, bizim komandada isə beş nəfər.", ru: "В «Хамсе» пять поэм, а в нашей команде пять человек.", en: "The Khamsa has five poems, and our team has five people." },
+  "team.sub":       { az: "Hər birimiz kompleksin bir binasının müəllifiyik.",
+                      ru: "Каждый из нас — автор одного из зданий комплекса.",
+                      en: "Each of us is the author of one building in the complex." },
 
   "rev.kicker":     { az: "Rəylər", ru: "Отзывы", en: "Reviews" },
   "rev.title":      { az: "Qonaqlarımız nə deyir", ru: "Что говорят гости", en: "What our guests say" },
@@ -113,5 +115,24 @@ const I18N = {
   "ok.title":   { az: "Təşəkkür edirik!", ru: "Спасибо!", en: "Thank you!" },
   "ok.text":    { az: "Sorğunuz qəbul olundu. Menecerimiz tezliklə sizinlə əlaqə saxlayacaq.", ru: "Заявка принята. Наш менеджер скоро свяжется с вами.", en: "Your request has been received. Our manager will contact you shortly." },
   "ok.num":     { az: "Rezervasiya nömrəsi", ru: "Номер брони", en: "Booking number" },
-  "ok.close":   { az: "Bağla", ru: "Закрыть", en: "Close" }
+  "ok.close":   { az: "Bağla", ru: "Закрыть", en: "Close" },
+
+  "stat.floors":    { az: "mərtəbəli otel", ru: "этажей отеля", en: "hotel floors" },
+  "nav.tickets":    { az: "Biletlər", ru: "Билеты", en: "Tickets" },
+
+  "tk.kicker":      { az: "Biletlər və qiymətlər", ru: "Билеты и цены", en: "Tickets and prices" },
+  "tk.title":       { az: "Bir keçid — beş bina", ru: "Один пропуск — пять зданий", en: "One pass, five buildings" },
+  "tk.sub":         { az: "Khamsa Pass yaşayış, qastronomiya, idman və muzey ekspozisiyalarını birləşdirir.", ru: "Khamsa Pass объединяет проживание, гастрономию, спорт и музейные экспозиции.", en: "The Khamsa Pass brings together your stay, dining, sport and the museum exhibitions." },
+  "tk.pass":        { az: "Beş binaya vahid rəqəmsal keçid", ru: "Единый цифровой пропуск во все пять зданий", en: "A single digital pass to all five buildings" },
+
+  "inv.kicker":     { az: "İnvestisiya layihəsi", ru: "Инвестиционный проект", en: "Investment project" },
+  "inv.title":      { az: "Millətin memarlıq kodu — rəqəmlərlə", ru: "Архитектурный код нации — в цифрах", en: "The nation's architectural code, in numbers" },
+  "inv.sub":        { az: "Vahid tarif siyasəti, kompleks sığorta və Dövlət Statistika Komitəsinin (stat.gov.az) məlumatlarına əsaslanan maliyyə modeli.", ru: "Единая тарифная политика, комплексное страхование и финансовая модель на данных Госкомстата (stat.gov.az).", en: "A single pricing policy, comprehensive insurance and a financial model based on State Statistics Committee data (stat.gov.az)." },
+  "inv.note":       { az: "Sığorta portfeli: 370,2 mln AZN örtük, ildə 1,098 mln AZN haqq (PASHA Insurance, AzRe, Lloyd’s). Hədəf: ölkəyə gələn turist axınının 5,5%-i.", ru: "Страховой портфель: покрытие 370,2 млн AZN, взнос 1,098 млн AZN в год (PASHA Insurance, AzRe, Lloyd’s). Цель: 5,5% въездного турпотока страны.", en: "Insurance portfolio: 370.2M AZN of cover for a premium of 1.098M AZN a year (PASHA Insurance, AzRe, Lloyd's). Target: 5.5% of all inbound tourists." },
+
+  "team.author":    { az: "Binanın müəllifi", ru: "Автор здания", en: "Author of" },
+  "rooms.single":   { az: "Standart = Deluxe: vahid qiymət, status üçün əlavə ödəniş yoxdur", ru: "«Стандарт» = «Делюкс»: единая цена, без доплаты за категорию", en: "Standard = Deluxe: one price, no upgrade fee" },
+  "rooms.low":      { az: "aşağı mövsüm", ru: "низкий сезон", en: "low season" },
+  "rooms.high":     { az: "yüksək mövsüm (iyun–sentyabr)", ru: "высокий сезон (июнь–сентябрь)", en: "high season (Jun–Sep)" },
+  "bk.season":      { az: "Qiymət hər gecə üçün mövsümə görə hesablanır", ru: "Цена каждой ночи считается по сезону", en: "Each night is priced by season" }
 };

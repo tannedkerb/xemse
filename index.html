@@ -40,6 +40,7 @@
         <a href="#rooms" data-i18n="nav.rooms"></a>
         <a href="#restaurant" data-i18n="nav.restaurant"></a>
         <a href="#services" data-i18n="nav.services"></a>
+        <a href="#tickets" data-i18n="nav.tickets"></a>
         <a href="#gallery" data-i18n="nav.gallery"></a>
         <a href="#team" data-i18n="nav.team"></a>
         <a href="#contact" data-i18n="nav.contact"></a>
@@ -58,7 +59,13 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="home">
-    <div class="hero__bg"><img src="img/complex-night.jpg" alt="XƏMSƏ complex" /></div>
+    <div class="hero__bg" id="heroBg">
+      <img src="img/hotel.jpg" alt="" class="active" />
+      <img src="img/entertainment.jpg" alt="" />
+      <img src="img/sport.jpg" alt="" />
+      <img src="img/restaurant.jpg" alt="" />
+      <img src="img/museum.jpg" alt="" />
+    </div>
     <div class="hero__shade"></div>
     <canvas class="hero__seeds" id="seeds"></canvas>
     <div class="container hero__content">
@@ -89,7 +96,7 @@
     <div class="container about__grid">
       <div class="about__media reveal">
         <div class="about__frame">
-          <img src="img/complex-day.jpg" alt="XƏMSƏ" />
+          <img src="img/hotel.jpg" alt="XƏMSƏ" style="object-position:66% 50%" />
         </div>
         <img src="img/emblem.png" alt="" class="about__badge" />
       </div>
@@ -101,7 +108,7 @@
         <div class="stats reveal">
           <div class="stat"><b data-count="5">0</b><span data-i18n="stat.buildings"></span></div>
           <div class="stat"><b data-count="240">0</b><span data-i18n="stat.rooms"></span></div>
-          <div class="stat"><b data-count="14">0</b><span data-i18n="stat.regions"></span></div>
+          <div class="stat"><b data-count="8">0</b><span data-i18n="stat.floors"></span></div>
           <div class="stat"><b data-count="5">0</b><span data-i18n="stat.team"></span></div>
         </div>
       </div>
@@ -173,6 +180,27 @@
     </div>
   </section>
 
+  <!-- ===== TICKETS / KHAMSA PASS ===== -->
+  <section class="section tickets" id="tickets">
+    <div class="container">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="tk.kicker"></p>
+        <h2 class="title reveal" data-i18n="tk.title"></h2>
+        <p class="lead reveal" data-i18n="tk.sub"></p>
+      </div>
+      <div class="tk-grid">
+        <div class="pass reveal">
+          <img src="img/emblem.png" alt="" class="pass__logo" />
+          <div class="pass__name">Khamsa Pass</div>
+          <p data-i18n="tk.pass"></p>
+          <div class="pass__price" id="passPrice"></div>
+          <button class="btn btn--gold js-book" data-i18n="btn.book"></button>
+        </div>
+        <ul class="tk-list" id="tkList"></ul>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== GALLERY ===== -->
   <section class="section gallery" id="gallery">
     <div class="container">
@@ -181,15 +209,25 @@
         <h2 class="title reveal" data-i18n="gal.title"></h2>
       </div>
       <div class="masonry" id="masonry">
-        <a href="img/complex-night.jpg" class="m-item m-wide reveal"><img src="img/complex-night.jpg" alt="" loading="lazy" /></a>
-        <a href="img/hotel.jpg" class="m-item m-tall reveal"><img src="img/hotel.jpg" alt="" loading="lazy" /></a>
+        <a href="img/hotel.jpg" class="m-item m-big reveal"><img src="img/hotel.jpg" alt="" loading="lazy" /></a>
+        <a href="img/sport.jpg" class="m-item m-wide reveal"><img src="img/sport.jpg" alt="" loading="lazy" /></a>
+        <a href="img/restaurant.jpg" class="m-item reveal"><img src="img/restaurant.jpg" alt="" loading="lazy" /></a>
         <a href="img/entertainment.jpg" class="m-item reveal"><img src="img/entertainment.jpg" alt="" loading="lazy" /></a>
-        <a href="img/sport.jpg" class="m-item m-tall reveal"><img src="img/sport.jpg" alt="" loading="lazy" /></a>
-        <a href="img/museum.jpg" class="m-item m-wide reveal"><img src="img/museum.jpg" alt="" loading="lazy" /></a>
-        <a href="img/restaurant.jpg" class="m-item m-tall reveal"><img src="img/restaurant.jpg" alt="" loading="lazy" /></a>
-        <a href="img/complex-day.jpg" class="m-item m-wide reveal"><img src="img/complex-day.jpg" alt="" loading="lazy" /></a>
-        <a href="img/poster.jpg" class="m-item m-tall reveal"><img src="img/poster.jpg" alt="" loading="lazy" /></a>
+        <a href="img/museum.jpg" class="m-item m-full reveal"><img src="img/museum.jpg" alt="" loading="lazy" /></a>
       </div>
+    </div>
+  </section>
+
+  <!-- ===== INVESTMENT ===== -->
+  <section class="section invest" id="invest">
+    <div class="container">
+      <div class="section__head">
+        <p class="kicker reveal" data-i18n="inv.kicker"></p>
+        <h2 class="title reveal" data-i18n="inv.title"></h2>
+        <p class="lead reveal" data-i18n="inv.sub"></p>
+      </div>
+      <div class="inv-grid" id="invGrid"></div>
+      <p class="inv__note reveal" data-i18n="inv.note"></p>
     </div>
   </section>
 
